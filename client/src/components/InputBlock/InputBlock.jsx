@@ -1,49 +1,71 @@
 import {
-  Box,
-  IconButton,
+  Input,
   InputAdornment,
+  IconButton,
   CircularProgress,
-  InputBase,
+  Box,
 } from "@mui/material";
-import MicIcon from "@mui/icons-material/Mic";
 import SendIcon from "@mui/icons-material/Send";
-import styles from "./InputBlock.module.css";
+import MicIcon from "@mui/icons-material/Mic";
 
-const InputBlock = ({
+function InputBlock({
+  listening,
   input,
   setInput,
-  onSend,
-  onVoice,
+  handleVoiceInput,
+  handleSend,
   loading,
-  listening,
-}) => (
-  <Box className={styles.inputContainer}>
-    <InputBase
-      fullWidth
-      placeholder={listening ? "Слушаю..." : "Спроси что угодно"}
-      value={input}
-      onChange={(e) => setInput(e.target.value)}
-      startAdornment={
-        <InputAdornment position="start">
-          <IconButton onClick={onVoice}>
-            <MicIcon style={{ color: listening ? "#FF5252" : "white" }} />
-          </IconButton>
-        </InputAdornment>
-      }
-      endAdornment={
-        <InputAdornment position="end">
-          <IconButton onClick={onSend} disabled={loading}>
-            {loading ? (
-              <CircularProgress size={20} sx={{ color: "white" }} />
-            ) : (
-              <SendIcon sx={{ color: "white" }} />
-            )}
-          </IconButton>
-        </InputAdornment>
-      }
-      className={styles.input}
-    />
-  </Box>
-);
+  handleKeyDown,
+}) {
+  return (
+    <Box
+      sx={{
+        marginTop: "var(--margin4)",
+        backgroundColor: "var(--secondary)",
+        padding: "var(--padding8) var(--padding16)",
+        borderRadius: "var(--border)",
+        display: "flex",
+        alignItems: "center",
+        boxShadow: 3,
+        maxWidth: 850,
+        width: "100%",
+      }}>
+      <Input
+        fullWidth
+        disableUnderline
+        placeholder={listening ? "I'm listening..." : "Ask whatever you want"}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        startAdornment={
+          <InputAdornment position="start">
+            <IconButton onClick={handleVoiceInput}>
+              <MicIcon
+                sx={{ color: listening ? "var(--red)" : "var(--white)" }}
+              />
+            </IconButton>
+          </InputAdornment>
+        }
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton onClick={handleSend} disabled={loading}>
+              {loading ? (
+                <CircularProgress size={20} sx={{ color: "var(--white)" }} />
+              ) : (
+                <SendIcon sx={{ color: "var(--white)" }} />
+              )}
+            </IconButton>
+          </InputAdornment>
+        }
+        sx={{
+          color: "var(--white)",
+          input: { color: "var(--white)" },
+          width: "100%",
+          fontSize: "var(--font)",
+        }}
+      />
+    </Box>
+  );
+}
 
 export default InputBlock;

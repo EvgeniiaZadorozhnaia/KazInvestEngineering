@@ -1,19 +1,37 @@
 import React from "react";
-import styles from "./Header.module.css";
-import { Typography } from "@mui/material";
+import { Typography, Paper } from "@mui/material";
 
 const Header = () => (
-  <div className={styles.header}>
-    <Typography variant="h5" fontWeight={500} gutterBottom>
-      Привет!
-    </Typography>
-    <Typography variant="h4" fontWeight="bold" gutterBottom>
-      Что ты хочешь узнать?
-    </Typography>
-    <Typography variant="body1" sx={{ opacity: 0.8 }} gutterBottom>
-      Используй одну из популярных подсказок или задай свой вопрос
-    </Typography>
-  </div>
+  <>
+    <Paper
+      elevation={0}
+      sx={{
+        backgroundColor: "transparent",
+        textAlign: "left",
+      }}>
+      <Typography
+        variant="h3"
+        fontWeight={500}
+        color="var(--white)"
+        gutterBottom>
+        Hi there!
+      </Typography>
+      <Typography
+        variant="h2"
+        fontWeight="bold"
+        color="var(--white)"
+        gutterBottom>
+        What would you like to know?
+      </Typography>
+      <Typography
+        color="var(--gray)"
+        gutterBottom
+        sx={{ fontSize: "var(--font)" }}>
+        Use one of the most common prompts below <br />
+        or ask your own question
+      </Typography>
+    </Paper>
+  </>
 );
 
 export default Header;

@@ -1,10 +1,37 @@
+:root {
+  /* colors */
+  --primary: #083b8b;
+  --secondary: #0e4bb5;
+  --third: #0e4bb58f;
+  --red: #FF5252;
+  --white: white;
+  --gray: rgba(255, 255, 255, 0.4);
+
+  /* sizes */
+  --padding: 2rem;
+  --padding2: 2px;
+  --padding8: 8px;
+  --padding16: 16px;
+  --margin4: 4px;
+  --margin16: 16px;
+  --font: 2rem;
+  --border: 16px;
+  --border12: 12px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .container {
   min-height: 100vh;
-  background-color: #083b8b;
+  background-color: var(--primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  padding: 16px;
+  color: var(--white);
+  padding: var(--padding);
 }
