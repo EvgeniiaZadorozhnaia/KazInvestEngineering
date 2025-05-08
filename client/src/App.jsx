@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const { VITE_BASE_URL } = import.meta.env;
+const { VITE_API, VITE_BASE_URL } = import.meta.env;
 import { Box } from "@mui/material";
 import Header from "./components/Header/Header";
 import InputBlock from "./components/InputBlock/InputBlock";
@@ -24,7 +24,7 @@ function App() {
   const handleSend = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`${VITE_BASE_URL}`, {
+      const res = await axios.post(`${VITE_BASE_URL}/${VITE_API}`, {
         message: input,
       });
       setReply(res.data.reply);
